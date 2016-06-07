@@ -1,7 +1,7 @@
 var expect = require('expect');
 var actions = require('actions');
 
-describe('Actions', () {
+describe('Actions', () => {
   it('Should generate search text action', () => {
     var action = {
       type: 'SET_SEARCH_TEXT',
