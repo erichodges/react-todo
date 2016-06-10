@@ -42,7 +42,7 @@ describe('Actions', () => {
     var action = {
       type: 'ADD_TODOS',
       todos
-    }
+    };
     var res = actions.addTodos(todos);
 
     expect(res).toEqual(action);
