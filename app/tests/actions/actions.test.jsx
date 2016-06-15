@@ -90,14 +90,20 @@ describe('Actions', () => {
     var testTodoRef;
 
     beforeEach((done) => {
+      var todosRef = firebaseRef.child('todos');
+
+      todosRef.remove().then(() => {
       testTodoRef = firebaseRef.child('todos').push();
 
-        testTodoRef.set({
+        return testTodoRef.set({
           text: 'Something to do',
           completed: false,
           createdAt: 23453453
-        }).then(() => done());
-    });
+        })
+     })
+     .then(() => done())
+     .catch(done);
+   });
 
     afterEach((done) => {
       testTodoRef.remove().then(() => done());
