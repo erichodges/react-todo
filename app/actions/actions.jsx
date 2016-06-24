@@ -79,6 +79,13 @@ export var updateTodo = (id, updates) => {
   };
 };
 
+export var deleteTodo = (id) => {
+	return {
+		type: 'DELETE_TODO',
+		id
+	};
+};
+
 export var startToggleTodo = (id, completed) => {
   return (dispatch, getState) => {
     var uid = getState().auth.uid;
