@@ -42,6 +42,39 @@ export var todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ];
+      case 'EDIT_TODO':
+			return state.map((todo) => {
+				if (todo.id === action.id) {
+					if (action.text.length > 0) {
+						return {
+							...todo,
+							edit: !todo.edit,
+							edited: true,
+							editedAt: moment().unix(),
+							text: action.text,
+						}
+					} else {
+						return {
+							...todo,
+							edit: !todo.edit
+						}
+					}
+				} else {
+					return todo;
+				}
+			});
+  		case 'DELETE_TODO':
+  			var deleteIndex;
+  			state.map((todo) => {
+  				if (todo.id === action.id) {
+  					deleteIndex = state.indexOf(todo);
+  				}
+  			});
+  			var todos = [
+  				...state.slice(0,deleteIndex),
+  				...state.slice(deleteIndex+1)
+  			];
+  			return todos;
       case 'LOGOUT':
         return [];
     default:
