@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDom = require('react-dom');
 var {connect} = require('react-redux');
 var moment = require('moment');
 var actions = require('actions');
@@ -12,7 +13,7 @@ export var Todo = React.createClass({
         }
     },
   render: function(){
-    var {id, text, completed, createdAt, completedAt, dispatch} = this.props;
+    var {id, text, completed, createdAt, completedAt, edit, edited, editedAt, dispatch} = this.props;
     var todoClassName = completed ? 'todo todo-completed' : 'todo';
     var renderDate = () => {
       var message = 'Created ';
@@ -48,7 +49,7 @@ export var Todo = React.createClass({
             if(!edit) {
                 return <button className="button alert del-btn" ref="delBtn" onClick={() => {
                     dispatch(actions.deleteTodo(id));
-                }}>X</button>;
+                }}>x</button>;
             }
             return;
         }

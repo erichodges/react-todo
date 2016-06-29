@@ -79,6 +79,21 @@ export var updateTodo = (id, updates) => {
   };
 };
 
+export var toggleTodo = (id) => {
+	return {
+		type: 'TOGGLE_TODO',
+		id
+	};
+};
+
+export var editTodo = (id, text) => {
+	return {
+		type: 'EDIT_TODO',
+		id,
+		text
+	};
+};
+
 export var deleteTodo = (id) => {
 	return {
 		type: 'DELETE_TODO',
